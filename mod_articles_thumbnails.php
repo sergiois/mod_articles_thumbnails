@@ -10,6 +10,13 @@
 defined('_JEXEC') or die;
 
 require_once dirname(__FILE__) . '/helper.php';
+
 $items = modarticlesthumbnailsHelper::getItems($params);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
-require JModuleHelper::getLayoutPath('mod_articles_thumbnails', $params->get('layout', 'default'));
+$layout = $params->get('layout', 'default');
+switch((int)$params->get('templateframework', 1))
+{
+    case 2: $layout .= '_bootstrap3'; break;
+}
+
+require JModuleHelper::getLayoutPath('mod_articles_thumbnails', $layout);
