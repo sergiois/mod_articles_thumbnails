@@ -17,6 +17,7 @@ $layout = $params->get('layout', 'default');
 switch((int)$params->get('templateframework', 1))
 {
     case 2: $layout .= '_bootstrap3'; break;
+    case 3: $layout .= '_uikit'; break;
 }
 
 require JModuleHelper::getLayoutPath('mod_articles_thumbnails', $layout);
