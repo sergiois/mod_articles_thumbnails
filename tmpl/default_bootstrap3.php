@@ -36,7 +36,7 @@ switch($params->get('count'))
                 }
                 ?>
                 <?php if($params->get('link_image')): ?>
-                    <a href="<?php echo $item->link; ?>" itemprop="url">
+                    <a href="<?php echo $item->link; ?>" itemprop="url" target="<?php echo $params->get('open_link', '_self'); ?>">
                         <img data-src="<?php echo $image; ?>" src="<?php echo $image; ?>" alt="<?php echo $alt; ?>">
                     </a>
                 <?php else: ?>
@@ -49,13 +49,32 @@ switch($params->get('count'))
                 <?php if($params->get('show_title')): ?>
                     <h3 itemprop="name">
                         <?php if($params->get('link_title')): ?>
-                            <a href="<?php echo $item->link; ?>" itemprop="url">
+                            <a href="<?php echo $item->link; ?>" itemprop="url" target="<?php echo $params->get('open_link', '_self'); ?>">
                         <?php endif; ?>
                         <?php echo $item->title; ?>
                         <?php if($params->get('link_title')): ?>
                             </a>
                         <?php endif; ?>
                     </h3>
+                <?php endif; ?>
+
+                <?php if($params->get('show_date')): ?>
+                    <small class="<?php echo $params->get('design_date'); ?>">
+                    <?php
+                        $dateformat = 'DATE_FORMAT_LC';
+                        switch((int)$params->get('date_format')){
+                            case 0: $dateformat = 'DATE_FORMAT_LC'; break;
+                            case 1: $dateformat = 'DATE_FORMAT_LC1'; break;
+                            case 2: $dateformat = 'DATE_FORMAT_LC2'; break;
+                            case 3: $dateformat = 'DATE_FORMAT_LC3'; break;
+                            case 4: $dateformat = 'DATE_FORMAT_LC4'; break;
+                            case 5: $dateformat = 'DATE_FORMAT_LC5'; break;
+                            case 6: $dateformat = $params->get('date_custom_format'); break;
+                            default: $dateformat = 'DATE_FORMAT_LC';
+                        }
+                        echo JHtml::_('date', $item->publish_date, JText::_($dateformat));
+                    ?>
+                    </small>
                 <?php endif; ?>
 
                 <?php if($params->get('show_content') != 'offc'): ?>
@@ -71,16 +90,16 @@ switch($params->get('count'))
                         {
                             $introtext = $introCleanText;
                         }
+                        echo '<p>'.$introtext.'</p>';
                     else:
-                        $introtext = $item->introtext;
+                        echo $item->introtext;
                     endif;
                     ?>
-                    <p><?php echo $introtext; ?></p>
                 <?php endif; ?>
                 
                 <?php if($params->get('show_readmore')): ?>
                 <p class="text-right">
-                    <a href="<?php echo $item->link; ?>" class="btn btn-primary"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : JText::_('MOD_ARTICLES_THUMBNAILS_FIELD_READMORE_TEXT'); ?></a>
+                    <a href="<?php echo $item->link; ?>" class="btn btn-primary" target="<?php echo $params->get('open_link', '_self'); ?>"><?php echo $params->get('readmore_text') ? $params->get('readmore_text') : JText::_('MOD_ARTICLES_THUMBNAILS_FIELD_READMORE_TEXT'); ?></a>
                 </p>
                 <?php endif; ?>
             </div>

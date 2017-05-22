@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.2.0</version>
+	<version>1.2.1</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_thumbnails">mod_articles_thumbnails.php</filename>
@@ -103,6 +103,60 @@
 				/>
 
 				<field
+					name="show_date"
+					type="radio"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_DATE_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_DATE_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+					name="date_format"
+					type="list"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_DATEFORMAT_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_DATEFORMAT_DESC"
+					default="0"
+					showon="show_date:1"
+					>
+					<option value="0">DATE_FORMAT_LC</option>
+					<option value="1">DATE_FORMAT_LC1</option>
+					<option value="2">DATE_FORMAT_LC2</option>
+					<option value="3">DATE_FORMAT_LC3</option>
+					<option value="4">DATE_FORMAT_LC4</option>
+					<option value="5">DATE_FORMAT_LC5</option>
+					<option value="6">MOD_ARTICLES_THUMBNAILS_OPTION_CUSTOM_VALUE</option>
+				</field>
+				<field
+					name="date_custom_format"
+					type="text"
+					default=""
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_DATEFORMATCUSTOM_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_DATEFORMATCUSTOM_DESC"
+					showon="date_format:6"
+				/>
+				<field
+					name="design_date"
+					type="list"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_DESIGNDATE_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_DESIGNDATE_DESC"
+					default=""
+					showon="show_date:1"
+					>
+					<option value="">MOD_ARTICLES_THUMBNAILS_OPTION_DESIGNNONE_VALUE</option>
+					<option value="label label-default">MOD_ARTICLES_THUMBNAILS_OPTION_DESIGNLABEL_VALUE</option>
+					<option value="badge badge-default">MOD_ARTICLES_THUMBNAILS_OPTION_DESIGNBADGE_VALUE</option>
+				</field>
+
+				<field
+					name="basicspacer0"
+					type="spacer"
+					hr="true"
+				/>
+
+				<field
 					name="show_content"
 					type="list"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_CONTENT_SELECTION_LABEL"
@@ -179,6 +233,25 @@
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_READMORE_DESC"
 					showon="show_readmore:1"
 				/>
+
+				<field
+					name="basicspacer4"
+					type="spacer"
+					hr="true"
+				/>
+
+				<field
+					name="open_link"
+					type="list"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_OPENLINK_SELECTION_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_OPENLINK_SELECTION_DESC"
+					default="self"
+					>
+					<option value="_self">MOD_ARTICLES_THUMBNAILS_OPTION_SELF_VALUE</option>
+					<option value="_blank">MOD_ARTICLES_THUMBNAILS_OPTION_BLANK_VALUE</option>
+					<option value="_parent">MOD_ARTICLES_THUMBNAILS_OPTION_PARENT_VALUE</option>
+					<option value="_top">MOD_ARTICLES_THUMBNAILS_OPTION_TOP_VALUE</option>
+				</field>
 			</fieldset>
 			
 			<fieldset
