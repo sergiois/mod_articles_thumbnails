@@ -9,7 +9,7 @@
  */
 defined('_JEXEC') or die;
 
-require_once dirname(__FILE__) . '/helper.php';
+JLoader::register('modarticlesthumbnailsHelper', __DIR__ . '/helper.php');
 
 $items = modarticlesthumbnailsHelper::getItems($params);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');

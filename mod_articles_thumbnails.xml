@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.2.1</version>
+	<version>1.2.2</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_thumbnails">mod_articles_thumbnails.php</filename>
@@ -67,7 +67,7 @@
 					>
 					<option value="1">Bootstrap 2.3.2</option>
 					<option value="2">Bootstrap 3</option>
-					<option value="3">UiKit</option>
+					<option value="3">UiKit 2</option>
 				</field>
 			</fieldset>
 			

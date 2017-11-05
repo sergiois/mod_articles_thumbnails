@@ -69,7 +69,7 @@ switch($params->get('count'))
                         case 6: $dateformat = $params->get('date_custom_format'); break;
                         default: $dateformat = 'DATE_FORMAT_LC';
                     }
-                    echo JHtml::_('date', $item->publish_date, JText::_($dateformat));
+                    echo JHtml::_('date', $item->publish_up, JText::_($dateformat));
                 ?>
                 </small>
             <?php endif; ?>
