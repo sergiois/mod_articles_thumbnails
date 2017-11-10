@@ -19,7 +19,9 @@ switch($params->get('count'))
     default: $span = 4;
 }
 ?>
-<ul class="thumbnails <?php echo $moduleclass_sfx; ?>">
+
+<div class="row-fluid">
+<ul class="thumbnails row-fluid <?php echo $moduleclass_sfx; ?>">
 <?php foreach ($items as $item) : ?>
 	<li class="span<?php echo $span; ?>" itemscope itemtype="https://schema.org/Article">
         <div class="thumbnail">
@@ -103,3 +105,4 @@ switch($params->get('count'))
 	</li>
 <?php endforeach; ?>
 </ul>
+</div>
