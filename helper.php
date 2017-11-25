@@ -15,7 +15,7 @@ JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/he
 JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_content/models', 'ContentModel');
 
 class modarticlesthumbnailsHelper {
-    function getItems($params){
+    static function getItems($params){
 		// Get an instance of the generic articles model
 		$model     = JModelLegacy::getInstance('Articles', 'ContentModel', array('ignore_request' => true));
 		
