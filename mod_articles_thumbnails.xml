@@ -68,6 +68,19 @@
 					<option value="1">Bootstrap 2.3.2</option>
 					<option value="2">Bootstrap 3</option>
 					<option value="3">UiKit 2</option>
+					<option value="4">UiKit 3</option>
+				</field>
+				<field
+				    name="uikit3-cardsize"
+				    type="list"
+				    label="MOD_ARTICLES_THUMBNAILS_FIELD_UIKIT3_CARDSIZE_LABEL"
+				    description="MOD_ARTICLES_THUMBNAILS_FIELD_UIKIT3_CARDSIZE_DESCRIPTION"
+				    default="none"
+				    showon="templateframework:4"
+				    >
+				    <option value="none">MOD_ARTICLES_THUMBNAILS_FIELD_UIKIT3_CARDSIZE_OPTION_NONE</option>
+				    <option value="uk-card-small">MOD_ARTICLES_THUMBNAILS_FIELD_UIKIT3_CARDSIZE_OPTION_SMALL</option>
+				    <option value="uk-card-large">MOD_ARTICLES_THUMBNAILS_FIELD_UIKIT3_CARDSIZE_OPTION_LARGE</option>
 				</field>
 			</fieldset>
 			
