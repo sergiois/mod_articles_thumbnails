@@ -11,3 +11,6 @@ Articles Thumbnails Module show articles of Joomla in a thumbnail format. You ca
 * Show or hide content (introtext or a part of content).
 * Show or hide image of articles and if you want it to have a link.
 * Show or hide button of "Read more" and the text of de button.
+* Open link in a new window.
+* Show or hide category
+* Ordering articles by Pubish date, Title or Hits.

@@ -57,6 +57,12 @@ switch($params->get('count'))
                         <?php endif; ?>
                     </h3>
                 <?php endif; ?>
+
+                <?php if($params->get('show_category')): ?>
+                    <small class="<?php echo $params->get('design_category'); ?>">
+                        <?php echo $item->category_title; ?>
+                    </small>
+                <?php endif; ?>
                 
                 <?php if($params->get('show_date')): ?>
                     <small class="<?php echo $params->get('design_date'); ?>">
