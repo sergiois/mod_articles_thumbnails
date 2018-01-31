@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.3.0</version>
+	<version>1.4.1</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_thumbnails">mod_articles_thumbnails.php</filename>
@@ -95,6 +95,7 @@
 					<option value="publish_up">MOD_ARTICLES_THUMBNAILS_OPTION_PUBLISHUP_VALUE</option>
 					<option value="title">MOD_ARTICLES_THUMBNAILS_OPTION_TITLE_VALUE</option>
 					<option value="hits">MOD_ARTICLES_THUMBNAILS_OPTION_HITS_VALUE</option>
+					<option value="random">MOD_ARTICLES_THUMBNAILS_OPTION_RAMDOM_VALUE</option>
 				</field>
 				<field
 					name="direction"

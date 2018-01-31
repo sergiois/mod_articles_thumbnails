@@ -42,8 +42,15 @@ class modarticlesthumbnailsHelper {
 		$model->setState('filter.language', $app->getLanguageFilter());
 
 		// Ordering
-		$model->setState('list.ordering', 'a.'.$params->get('ordering', 'publish_up'));
-		$model->setState('list.direction', $params->get('direction', 'DESC'));
+		if($params->get('ordering') == 'random')
+        {
+            $model->setState('list.ordering', JFactory::getDbo()->getQuery(true)->Rand());
+        }
+        else
+        {
+            $model->setState('list.ordering', 'a.'.$params->get('ordering', 'publish_up'));
+            $model->setState('list.direction', $params->get('direction', 'DESC'));
+        }
 
 		$items = $model->getItems();
 		foreach ($items as &$item)
