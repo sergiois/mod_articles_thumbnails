@@ -15,3 +15,4 @@ Articles Thumbnails Module show articles of Joomla in a thumbnail format. You ca
 * Show or hide category
 * Ordering articles by Pubish date, Title or Hits.
 * Ordering articles Randomly.
+* Ordering articles by Order of articles.
