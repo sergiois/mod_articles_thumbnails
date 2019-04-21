@@ -14,8 +14,32 @@ defined('_JEXEC') or die;
 JLoader::register('ContentHelperRoute', JPATH_SITE . '/components/com_content/helpers/route.php');
 JModelLegacy::addIncludePath(JPATH_SITE . '/components/com_content/models', 'ContentModel');
 
-class modarticlesthumbnailsHelper {
-    static function getItems($params){
+class modarticlesthumbnailsHelper
+{
+	static function getItems($params)
+	{
+		// Set application parameters in model
+		$app       = JFactory::getApplication();
+		$appParams = $app->getParams();
+		
+		$option = $app->input->get('option');
+    	$view   = $app->input->get('view');
+		
+		$onlyInArticles = $params->get('show_only_in_articles');
+		
+		$relatedArticles = true;
+
+        if ($onlyInArticles)
+        {
+    		$option = $app->input->get('option');
+    		$view   = $app->input->get('view');
+            
+            if (!($option === 'com_content' && $view === 'article'))
+    		{
+    			return array();
+    		}
+		}
+		
 		// Get an instance of the generic articles model
 		$model     = JModelLegacy::getInstance('Articles', 'ContentModel', array('ignore_request' => true));
 		
