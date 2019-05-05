@@ -12,6 +12,12 @@ defined('_JEXEC') or die;
 JLoader::register('modarticlesthumbnailsHelper', __DIR__ . '/helper.php');
 
 $items = modarticlesthumbnailsHelper::getItems($params);
+
+if (!count($items))
+{
+	return;
+}
+
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 $layout = $params->get('layout', 'default');
 switch((int)$params->get('templateframework', 1))
