@@ -80,9 +80,6 @@
 					>
 					<option value="">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_OPTION_NO_RELATION</option>
 					<option value="category">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_BY_CATEGORY</option>
-					<option value="tags">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_BY_TAGS</option>
-					<option value="keywords">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_BY_KEYWORDS</option>
-					<option value="title">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_BY_TITLE</option>
 				</field>
 
 				<field

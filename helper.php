@@ -60,18 +60,6 @@ class modarticlesthumbnailsHelper
 				$categoryId = self::getArticleCategory($id);
 				$model->setState('filter.category_id', $categoryId);
 				break;
-			case 'tags':
-				break;
-			case 'keywords':
-				$articleIds = self::getByKeyword($id);
-
-				if (count($articleIds))
-				{
-					$model->setState('filter.article_id', $articleIds);
-				}
-				break;
-			case 'title':
-				break;
 		}
 
 		// Set application parameters in model
@@ -165,92 +153,4 @@ class modarticlesthumbnailsHelper
 
 	}
 
-	/**
-	 * Get related articles by Keyword
-	 *
-	 * @param	integer	$id	Article id
-	 *
-	 * @return	array	Array of articles
-	 */
-	public static function getByKeyword($id)
-	{
-		$db = JFactory::getDbo();
-
-		$query = $db->getQuery(true);
-
-		// Select the meta keywords from the item
-		$query->select('metakey')
-			->from('#__content')
-			->where('id = ' . (int) $id);
-		$db->setQuery($query);
-
-		try
-		{
-			$metakey = trim($db->loadResult());
-		}
-		catch (RuntimeException $e)
-		{
-			JFactory::getApplication()->enqueueMessage(JText::_('MOD_ARTICLE_THUMBNAILS_AN_ERROR_HAS_OCCURRED'), 'error');
-
-			return array();
-		}
-
-		// Explode the meta keys on a comma
-		$keys  = explode(',', $metakey);
-		$likes = array();
-
-		// Assemble any non-blank word(s)
-		foreach ($keys as $key)
-		{
-			$key = trim($key);
-
-			if ($key)
-			{
-				$likes[] = $db->escape($key);
-			}
-		}
-
-		if (count($likes))
-		{
-			// Select other items based on the metakey field 'like' the keys found
-			$query->clear()
-				->select('a.id')
-				->from('#__content AS a')
-				->where('a.id != ' . (int) $id)
-				->where('a.state = 1')
-				->where('a.access IN (' . $groups . ')');
-
-			$wheres = array();
-
-			foreach ($likes as $keyword)
-			{
-				$wheres[] = 'a.metakey LIKE ' . $db->quote('%' . $keyword . '%');
-			}
-
-			$query->where('(' . implode(' OR ', $wheres) . ')')
-				->where('(a.publish_up = ' . $db->quote($nullDate) . ' OR a.publish_up <= ' . $db->quote($now) . ')')
-				->where('(a.publish_down = ' . $db->quote($nullDate) . ' OR a.publish_down >= ' . $db->quote($now) . ')');
-
-			// Filter by language
-			if (JLanguageMultilang::isEnabled())
-			{
-				$query->where('a.language in (' . $db->quote(JFactory::getLanguage()->getTag()) . ',' . $db->quote('*') . ')');
-			}
-
-			$db->setQuery($query, 0, $maximum);
-
-			try
-			{
-				$articleIds = $db->loadColumn();
-			}
-			catch (RuntimeException $e)
-			{
-				JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
-
-				return array();
-			}
-
-			return $articleIds;
-		}
-	}
 }
