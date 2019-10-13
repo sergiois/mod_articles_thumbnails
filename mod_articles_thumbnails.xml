@@ -70,6 +70,19 @@
 				</field>
 
 				<field
+					name="related_mode"
+					type="list"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					showon="show_only_in_articles:1"
+					>
+					<option value="">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_OPTION_NO_RELATION</option>
+					<option value="category">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_BY_CATEGORY</option>
+				</field>
+
+				<field
 					name="templateframework"
 					type="list"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_TEMPLATE_LABEL"
