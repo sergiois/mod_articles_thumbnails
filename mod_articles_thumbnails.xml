@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.4.3</version>
+	<version>1.4.4</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_thumbnails">mod_articles_thumbnails.php</filename>
@@ -67,6 +67,19 @@
 					>
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="related_mode"
+					type="list"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_DESC"
+					class="btn-group btn-group-yesno"
+					default="1"
+					showon="show_only_in_articles:1"
+					>
+					<option value="">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_OPTION_NO_RELATION</option>
+					<option value="category">MOD_ARTICLES_THUMBNAILS_FIELD_RELATED_MODE_BY_CATEGORY</option>
 				</field>
 
 				<field
