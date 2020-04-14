@@ -8,6 +8,8 @@
  * @author 		Sergio Iglesias (@sergiois)
  */
 
+use Joomla\CMS\Factory;
+
 // no direct access
 defined('_JEXEC') or die;
 
@@ -26,13 +28,15 @@ class modarticlesthumbnailsHelper
 	static public function getItems($params)
 	{
 		// Set application parameters in model
-		$app       = JFactory::getApplication();
+		$app       = Factory::getApplication();
 		$appParams = $app->getParams();
 
 		$option = $app->input->get('option');
 		$view   = $app->input->get('view');
 
 		$onlyInArticles = $params->get('show_only_in_articles');
+		$tframework = $params->get('templateframework');
+		$total_articles = $params->get('total_articles');
 
 		$relatedArticles = true;
 
@@ -63,19 +67,26 @@ class modarticlesthumbnailsHelper
 		}
 
 		// Set application parameters in model
-		$app       = JFactory::getApplication();
+		$app       = Factory::getApplication();
 		$appParams = $app->getParams();
 		$model->setState('params', $appParams);
 
 		// Set the filters based on the module params
 		$model->setState('list.start', 0);
-		$model->setState('list.limit', (int) $params->get('count', 3));
+		if($tframework == 5)
+		{
+			$model->setState('list.limit', (int) $total_articles);
+		}
+		else
+		{
+			$model->setState('list.limit', (int) $params->get('count', 3));
+		}
 		$model->setState('filter.published', 1);
 		$model->setState('filter.featured', $params->get('show_front', 1) == 1 ? 'show' : 'hide');
 
 		// Access filter
 		$access = !JComponentHelper::getParams('com_content')->get('show_noauth');
-		$authorised = JAccess::getAuthorisedViewLevels(JFactory::getUser()->get('id'));
+		$authorised = JAccess::getAuthorisedViewLevels(Factory::getUser()->get('id'));
 		$model->setState('filter.access', $access);
 
 		// Category filter
@@ -90,7 +101,7 @@ class modarticlesthumbnailsHelper
 		// Ordering
 		if ($params->get('ordering') == 'random')
 		{
-			$model->setState('list.ordering', JFactory::getDbo()->getQuery(true)->Rand());
+			$model->setState('list.ordering', Factory::getDbo()->getQuery(true)->Rand());
 		}
 		else
 		{
@@ -128,7 +139,7 @@ class modarticlesthumbnailsHelper
 	 */
 	public static function getArticleCategory($id)
 	{
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 
 		$query = $db->getQuery(true);
 
@@ -144,7 +155,7 @@ class modarticlesthumbnailsHelper
 		}
 		catch (RuntimeException $e)
 		{
-			JFactory::getApplication()->enqueueMessage(JText::_('MOD_ARTICLE_THUMBNAILS_AN_ERROR_HAS_OCCURRED'), 'error');
+			Factory::getApplication()->enqueueMessage(JText::_('MOD_ARTICLE_THUMBNAILS_AN_ERROR_HAS_OCCURRED'), 'error');
 
 			$catId = 0;
 		}

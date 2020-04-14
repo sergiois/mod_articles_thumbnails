@@ -7,6 +7,9 @@
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
+
+use Joomla\CMS\Helper\ModuleHelper;
+
 defined('_JEXEC') or die;
 
 JLoader::register('modarticlesthumbnailsHelper', __DIR__ . '/helper.php');
@@ -25,6 +28,7 @@ switch((int)$params->get('templateframework', 1))
     case 2: $layout .= '_bootstrap3'; break;
     case 3: $layout .= '_uikit'; break;
     case 4: $layout .= '_uikit3'; break;
+    case 5: $layout .= '_slide'; break;
 }
 
-require JModuleHelper::getLayoutPath('mod_articles_thumbnails', $layout);
+require ModuleHelper::getLayoutPath('mod_articles_thumbnails', $layout);

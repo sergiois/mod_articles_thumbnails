@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2016 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.4.4</version>
+	<version>1.5.0</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<files>
 		<filename module="mod_articles_thumbnails">mod_articles_thumbnails.php</filename>
@@ -93,7 +93,26 @@
 					<option value="2">Bootstrap 3</option>
 					<option value="3">UiKit 2</option>
 					<option value="4">UiKit 3</option>
+					<option value="5">Slide</option>
 				</field>
+
+				<field
+					name="total_articles"
+					type="text"
+					default=""
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_TOTAL_ARTICLES_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_TOTAL_ARTICLES_DESC"
+					showon="templateframework:5"
+				/>
+				<field
+					name="slide_active"
+					type="text"
+					default="1"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_SLIDE_ACTIVE_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_SLIDE_ACTIVE_DESC"
+					showon="templateframework:5"
+				/>
+
 				<field
 				    name="uikit3-cardsize"
 				    type="list"

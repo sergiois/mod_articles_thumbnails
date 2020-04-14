@@ -19,6 +19,7 @@ Articles Thumbnails Module show articles of Joomla in a thumbnail format. You ca
 * Ordering articles by Order of articles.
 * Show only in article view.
 * Show only articles in the same category as the current article
+* Slide option template for BS4
 
 * * *
 
@@ -29,6 +30,9 @@ Articles Thumbnails Module show articles of Joomla in a thumbnail format. You ca
 
 ### Version 1.4.4 [2019-10-13]
 * **[Added]** Show only articles in the same category as the current article. Thanks to Cárlos Cámara ([carcam](https://github.com/carcam "carcam")) for his [Pull Request](https://github.com/sergiois/mod_articles_thumbnails/pull/10 "Pull Request").
+
+### Version 1.5.0 [2020-04-14]
+* **[Added]** Slide option template for BS4
 
 * * *
 
