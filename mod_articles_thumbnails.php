@@ -3,18 +3,17 @@
  * @package     Joomla.Site
  * @subpackage  mod_articles_thumbnails
  *
- * @copyright	Copyright © 2016 - All rights reserved.
+ * @copyright	Copyright © 2023 - All rights reserved.
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
 
 use Joomla\CMS\Helper\ModuleHelper;
+use Joomla\Module\ArticlesThumbnails\Site\Helper\ArticlesThumbnailsHelper;
 
 defined('_JEXEC') or die;
 
-JLoader::register('modarticlesthumbnailsHelper', __DIR__ . '/helper.php');
-
-$items = modarticlesthumbnailsHelper::getItems($params);
+$items = ArticlesThumbnailsHelper::getItems($params);
 
 if (!count($items))
 {
@@ -29,6 +28,7 @@ switch((int)$params->get('templateframework', 1))
     case 3: $layout .= '_uikit'; break;
     case 4: $layout .= '_uikit3'; break;
     case 5: $layout .= '_slide'; break;
+    case 6: $layout .= '_bootstrap5'; break;
 }
 
 require ModuleHelper::getLayoutPath('mod_articles_thumbnails', $layout);

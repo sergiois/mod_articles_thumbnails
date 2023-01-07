@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" method="upgrade" client="site">
 	<name>MOD_ARTICLES_THUMBNAILS</name>
-	<creationDate>Nov 2016</creationDate>
+	<creationDate>January 2023</creationDate>
 	<author>Sergio Iglesias</author>
 	<authorEmail>info@sergioiglesias.net</authorEmail>
 	<authorUrl>https://sergioiglesias.net</authorUrl>
-	<copyright>Copyright © 2016 - All rights reserved.</copyright>
+	<copyright>Copyright © 2023 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.5.0</version>
+	<version>1.6.0</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
+	<namespace path="src">Joomla\Module\ArticlesThumbnails</namespace>
 	<files>
 		<filename module="mod_articles_thumbnails">mod_articles_thumbnails.php</filename>
 		<filename>mod_articles_thumbnails.xml</filename>
-		<filename>helper.php</filename>
 		<filename>index.html</filename>
-		<folder>language</folder>
+		<folder>src</folder>
 		<folder>tmpl</folder>
 	</files>
 	<config>
@@ -24,14 +24,13 @@
 					name="catid"
 					type="category"
 					label="JCATEGORY"
-					description="MOD_ARTICLES_THUMBNAILS_FIELD_CATEGORY_DESC"
 					extension="com_content"
 					multiple="true"
-					size="10"
-					default=""
-					>
-					<option value="">JOPTION_ALL_CATEGORIES</option>
-				</field>
+					filter="intarray"
+					class="multipleCategories"
+					layout="joomla.form.field.list-fancy-select"
+					description="MOD_ARTICLES_FAQ_FIELD_CATEGORY_DESC"
+				/>
 
 				<field
 					name="count"
@@ -49,24 +48,26 @@
 				<field
 					name="show_front"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_FEATURED_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_FEATURED_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="1"
 					>
-					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
 				</field>
 				<field
 					name="show_only_in_articles"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_ONLY_IN_ARTICLES_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_ONLY_IN_ARTICLES_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="1"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 
 				<field
@@ -94,6 +95,7 @@
 					<option value="3">UiKit 2</option>
 					<option value="4">UiKit 3</option>
 					<option value="5">Slide</option>
+					<option value="6">Bootstrap 5</option>
 				</field>
 
 				<field
@@ -161,25 +163,27 @@
 				<field
 					name="show_title"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_TITLE_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_TITLE_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="1"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 				<field
 					name="link_title"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_LINK_TITLE_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_LINK_TITLE_DESC"
 					class="btn-group btn-group-yesno"
 					default="0"
 					showon="show_title:1"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 
 				<field
@@ -191,13 +195,14 @@
 				<field
 					name="show_category"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_CATEGORY_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_CATEGRY_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="0"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 				<field
 					name="design_category"
@@ -221,13 +226,14 @@
 				<field
 					name="show_date"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_DATE_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_DATE_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="0"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 				<field
 					name="date_custom_format"
@@ -259,13 +265,14 @@
 				<field
 					name="show_date"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_DATE_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_SHOW_DATE_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="0"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 				<field
 					name="date_format"
@@ -351,14 +358,15 @@
 				<field
 					name="link_image"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_LINK_IMAGE_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_LINK_IMAGE_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="0"
 					showon="show_image:intro,fulltext"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 
 				<field
@@ -370,13 +378,14 @@
 				<field
 					name="show_readmore"
 					type="radio"
+					layout="joomla.form.field.radio.switcher"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_READMORE_SELECTION_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_READMORE_SELECTION_DESC"
-					class="btn-group btn-group-yesno"
+					filter="integer"
 					default="0"
 					>
-					<option value="1">JYES</option>
 					<option value="0">JNO</option>
+					<option value="1">JYES</option>
 				</field>
 
 				<field
@@ -408,44 +417,49 @@
 				</field>
 			</fieldset>
 			
-			<fieldset
-				name="advanced">
+			<fieldset name="advanced">
 				<field
 					name="layout"
 					type="modulelayout"
 					label="JFIELD_ALT_LAYOUT_LABEL"
-					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+					class="form-select"
+					validate="moduleLayout"
+				/>
 
 				<field
 					name="moduleclass_sfx"
-					type="textarea" rows="3"
+					type="textarea"
 					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
-					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+					rows="3"
+					validate="CssIdentifier"
+				/>
 
 				<field
 					name="cache"
 					type="list"
-					default="1"
 					label="COM_MODULES_FIELD_CACHING_LABEL"
-					description="COM_MODULES_FIELD_CACHING_DESC">
-					<option
-						value="1">JGLOBAL_USE_GLOBAL</option>
-					<option
-						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+					default="1"
+					filter="integer"
+					validate="options"
+					>
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
 				</field>
 
 				<field
 					name="cache_time"
-					type="text"
-					default="900"
+					type="number"
 					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
-					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+					default="900"
+					filter="integer"
+				/>
+
 				<field
 					name="cachemode"
 					type="hidden"
-					default="static">
-					<option
-						value="static"></option>
+					default="static"
+					>
+					<option value="static"></option>
 				</field>
 			</fieldset>
 		</fields>
