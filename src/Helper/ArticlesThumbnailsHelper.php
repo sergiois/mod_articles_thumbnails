@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  mod_articles_thumbnails
  *
- * @copyright	Copyright © 2023 - All rights reserved.
+ * @copyright	Copyright © 2022 - All rights reserved.
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
@@ -52,7 +52,18 @@ class ArticlesThumbnailsHelper implements DatabaseAwareInterface
         $model->setState('filter.published', 1);
 
         // Set the filters based on the module params
-        $model->setState('list.limit', (int) $params->get('count', 5));
+        $frameworks = array(5,7);
+        if(in_array((int)$params->get('templateframework'), $frameworks))
+        {
+            $model->setState('list.limit', (int) $params->get('total_articles'));
+        }
+        else
+        {
+            if(!$params->get('show_all', 0))
+            {
+                $model->setState('list.limit', (int) $params->get('count', 5));
+            }
+        }
 
         // This module does not use tags data
         $model->setState('load_tags', false);

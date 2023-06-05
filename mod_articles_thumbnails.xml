@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" method="upgrade" client="site">
 	<name>MOD_ARTICLES_THUMBNAILS</name>
-	<creationDate>January 2023</creationDate>
+	<creationDate>Nov 2016</creationDate>
 	<author>Sergio Iglesias</author>
 	<authorEmail>info@sergioiglesias.net</authorEmail>
 	<authorUrl>https://sergioiglesias.net</authorUrl>
-	<copyright>Copyright © 2023 - All rights reserved.</copyright>
+	<copyright>Copyright © 2022 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.6.0</version>
+	<version>1.6.1</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<namespace path="src">Joomla\Module\ArticlesThumbnails</namespace>
 	<files>
@@ -33,16 +33,45 @@
 				/>
 
 				<field
+					name="show_all"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_SHOWALL_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_SHOWALL_DESC"
+					filter="integer"
+					default="0"
+					>
+					<option value="0">JHIDE</option>
+					<option value="1">JSHOW</option>
+				</field>
+
+				<field
 					name="count"
 					type="list"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_COUNT_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_COUNT_DESC"
 					default="3"
+					showon="show_all:0"
 					>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
 					<option value="4">4</option>
+				</field>
+
+				<field
+					name="num_cols"
+					type="list"
+					label="MOD_ARTICLES_THUMBNAILS_FIELD_NUMCOLS_LABEL"
+					description="MOD_ARTICLES_THUMBNAILS_FIELD_NUMCOLS_DESC"
+					default="4"
+					showon="show_all:1"
+					>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="6">6</option>
 				</field>
 
 				<field
@@ -94,8 +123,9 @@
 					<option value="2">Bootstrap 3</option>
 					<option value="3">UiKit 2</option>
 					<option value="4">UiKit 3</option>
-					<option value="5">Slide</option>
+					<option value="5">Slide Bootstrap 4</option>
 					<option value="6">Bootstrap 5</option>
+					<option value="7">Slide Bootstrap 5</option>
 				</field>
 
 				<field
@@ -104,7 +134,7 @@
 					default=""
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_TOTAL_ARTICLES_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_TOTAL_ARTICLES_DESC"
-					showon="templateframework:5"
+					showon="templateframework:5,7"
 				/>
 				<field
 					name="slide_active"
@@ -112,7 +142,7 @@
 					default="1"
 					label="MOD_ARTICLES_THUMBNAILS_FIELD_SLIDE_ACTIVE_LABEL"
 					description="MOD_ARTICLES_THUMBNAILS_FIELD_SLIDE_ACTIVE_DESC"
-					showon="templateframework:5"
+					showon="templateframework:5,7"
 				/>
 
 				<field

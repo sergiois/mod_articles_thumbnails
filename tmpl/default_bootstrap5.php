@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  mod_articles_thumbnails
  *
- * @copyright	Copyright © 2023 - All rights reserved.
+ * @copyright	Copyright © 2016 - All rights reserved.
  * @license		GNU General Public License v2.0
  * @author 		Sergio Iglesias (@sergiois)
  */
@@ -14,16 +14,32 @@ use Joomla\CMS\Language\Text;
 defined('_JEXEC') or die;
 
 $spanmd = 4;
-switch($params->get('count'))
+$classall = '';
+if($params->get('show_all', 0))
 {
-    case 1: $spanmd = 12; break;
-    case 2: $spanmd = 6; break;
-    case 3: $spanmd = 4; break;
-    case 4: $spanmd = 3; break;
-    default: $spanmd = 4;
+    switch($params->get('num_cols'))
+    {
+        case 1: $spanmd = 12; break;
+        case 2: $spanmd = 6; break;
+        case 3: $spanmd = 4; break;
+        case 4: $spanmd = 3; break;
+        case 6: $spanmd = 2; break;
+    }
+    $classall = 'all';
+}
+else
+{
+    switch($params->get('count'))
+    {
+        case 1: $spanmd = 12; break;
+        case 2: $spanmd = 6; break;
+        case 3: $spanmd = 4; break;
+        case 4: $spanmd = 3; break;
+        default: $spanmd = 4;
+    }
 }
 ?>
-<div class="row <?php echo $moduleclass_sfx; ?>">
+<div class="row <?php echo $moduleclass_sfx; ?> <?php echo $classall; ?>">
 <?php foreach ($items as $item) : ?>
     <div class="col-xs-12 col-sm-6 col-md-<?php echo $spanmd; ?> col-lg-<?php echo $spanmd; ?>" itemscope itemtype="https://schema.org/Article">
         <div class="card">
