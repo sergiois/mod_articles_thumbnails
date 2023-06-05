@@ -7,7 +7,7 @@
 	<authorUrl>https://sergioiglesias.net</authorUrl>
 	<copyright>Copyright © 2022 - All rights reserved.</copyright>
 	<license>GNU General Public License v2.0</license>
-	<version>1.6.1</version>
+	<version>1.6.2</version>
 	<description>MOD__P_JOOMLA__ARTICLES_IN_BOOTS</description>
 	<namespace path="src">Joomla\Module\ArticlesThumbnails</namespace>
 	<files>

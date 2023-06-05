@@ -44,6 +44,9 @@ Articles Thumbnails Module show articles of Joomla in a thumbnail format. You ca
 * **[Added]** Slide template for Bootstrap 5
 * **[Added]** Show all articles
 
+### Version 1.6.2 [2023-06-05]
+* **[Fixed]** Fixed several issues
+
 * * *
 
 ## Copyright & License

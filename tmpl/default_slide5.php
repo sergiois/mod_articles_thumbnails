@@ -26,7 +26,6 @@ else
 {
     $itemstoshow = (int)$params->get('count');
 }
-$itemstoshow = (int)$params->get('count');
 $itemstotal = count($items);
 $slidestoshow = ceil(count($items) / $itemstoshow);
 $show=0;
@@ -39,6 +38,10 @@ switch($params->get('count'))
     case 3: $spanmd = 4; break;
     case 4: $spanmd = 3; break;
     default: $spanmd = 4;
+}
+if($client->mobile)
+{
+    $spanmd = 12;
 }
 
 HTMLHelper::_('bootstrap.carousel', '.selector');

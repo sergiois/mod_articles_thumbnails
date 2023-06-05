@@ -106,11 +106,13 @@ class ArticlesThumbnailsHelper implements DatabaseAwareInterface
 
         // Set ordering
         $ordering = $params->get('ordering', 'a.publish_up');
-        $model->setState('list.ordering', $ordering);
 
-        if (trim($ordering) === 'rand()') {
-            $model->setState('list.ordering', $this->getDatabase()->getQuery(true)->rand());
-        } else {
+        if ($ordering === 'random')
+        {
+            $model->setState('list.ordering', Factory::getDbo()->getQuery(true)->rand());
+        }
+        else
+        {
             $direction = $params->get('direction', 1) ? 'DESC' : 'ASC';
             $model->setState('list.direction', $direction);
             $model->setState('list.ordering', $ordering);
