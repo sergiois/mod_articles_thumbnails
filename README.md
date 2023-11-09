@@ -47,6 +47,9 @@ Articles Thumbnails Module show articles of Joomla in a thumbnail format. You ca
 ### Version 1.6.2 [2023-06-05]
 * **[Fixed]** Fixed several issues
 
+### Version 1.6.3 [2023-11-09]
+* **[Fixed]** Fixed several issues
+
 * * *
 
 ## Copyright & License

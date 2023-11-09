@@ -141,7 +141,7 @@ class ArticlesThumbnailsHelper implements DatabaseAwareInterface
             $item->introtext = HTMLHelper::_('content.prepare', $item->introtext, '', 'mod_articles_news.content');
 
             // Remove any images belongs to the text
-            if (!$params->get('image')) {
+            if (!$params->get('show_image')) {
                 $item->introtext = preg_replace('/<img[^>]*>/', '', $item->introtext);
             }
 
